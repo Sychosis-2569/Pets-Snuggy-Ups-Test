@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pets Snuggy Ups</title>
+
+  <!-- Load Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&family=Story+Script&display=swap" rel="stylesheet">
+
+<style>
+  /* Site Background */
+  body {
+    background-color: powderblue; /* Powder blue background for the site */
+    font-family: 'Raleway', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+
+  /* Headings */
+  h1,h2,h3,h4,h5,h6 {
+    font-family: 'Raleway', sans-serif;
+    margin-top: 0;
+    color: #333;
+  }
+
+  /* Header & Footer */
+  header, footer {
+    background-color: #e0f0ff; /* Light, soft blue to blend with powder blue */
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  /* Navigation */
+  nav {
+    background-color: #434c55; /* Medium blue for contrast */
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  nav a {
+    color: white;
+    padding: 1rem;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  nav a:hover, nav a.active {
+    background-color: #66b2ff; /* Lighter hover color */
+  }
+
+  /* Main container */
+  main {
+    max-width: 900px;
+    margin: 1rem auto;
+    padding: 0 1rem;
+  }
+
+  /* Product cards */
+.product {
+  background-color: #cff2fc;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+  /* Labels and inputs */
+  label {
+    font-weight: bold;
+    display: block;
+    margin-top: 0.5rem;
+  }
+  select, input[type=text], input[type=number], textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.2rem;
+    box-sizing: border-box;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+
+  /* Buttons */
+  button {
+    padding: 0.5rem 1rem;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    border: none;
+    background-color: #3399ff;
+    color: white;
+    border-radius: 6px;
+    transition: 0.3s;
+    font-weight: bold;
+  }
+  button:hover {
+    background-color: #66b2ff;
+  }
+
+  /* Cart Summary */
+  .cart-summary {
+    background-color: #cff2fc; /* Soft blue for cart panel */
+    padding: 1rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+
+  /* Fabric print choices */
+  .or-blocks {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.2rem;
+  }
+  .or-blocks input {
+    flex: 1;
+  }
+  .print-heading {
+    font-weight: bold;
+    margin-top: 0.5rem;
+    cursor: help;
+  }
+
+  /* Sections */
+  section {
+    display: none;
+  }
+  section.active {
+    display: block;
+  }
+
+  /* Gallery */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    justify-items: center;
+  }
+  .gallery-thumbnail {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .gallery-thumbnail:hover {
+    transform: scale(1.05);
+  }
+
+  /* Lightbox */
+  #lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+  }
+  #lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <img src="474531404_1134325425150141_2188912264964813157_n.jpg" alt="Pets SNUGGY Ups Banner" style="width:100%; height:auto;" />
+    <nav>
+      <a href="#" class="nav-link active" onclick="showSection('products', this)">Products</a>
+      <a href="#" class="nav-link" onclick="showSection('gallery', this)">Gallery</a>
+      <a href="#" class="nav-link" onclick="showSection('about', this)">About Us</a>
+      <a href="#" class="nav-link" onclick="showSection('contact', this)">Contact Us</a>
+    </nav>
+  </header>
+
+  <p style="font-style: italic; font-weight: bold; color: #333; margin-bottom: 1rem;">
+  *Suited for Westpack Petzone plastic beds
+  </p>
+
+  <p style="font-style: italic; font-weight: bold; color: #333; margin-bottom: 1rem;">
+  *Please make sure of the bed measurements
+  </p>
+
+  <p style="font-style: italic; font-weight: bold; color: #333; margin-bottom: 1rem;">
+  *A delivery fee will be charged for deliveries outside of Pretoria
+  </p>
+
+  <main>
+    <!-- Products Section -->
+<section id="products" class="active">
+  <!-- Luxury Bed -->
+  <div class="product">
+    <h2>Luxury Bed</h2>
+    <img src="125298134_117411260174901_5926903200497521646_n.jpg" alt="Luxury Bed" style="width:100%; border-radius:6px;" />
+    <p>High-quality luxury bed for pets.</p>
+
+    <label>Size</label>
+    <select id="luxury-size">
+      <option value="Small">Small (R600)</option>
+      <option value="Medium">Medium (R750)</option>
+      <option value="Large">Large (R850)</option>
+    </select>
+
+    <label>Fabric</label>
+    <select id="luxury-fabric" onchange="updateFabricInputs('luxury')">
+      <option value="Denim">Denim</option>
+      <option value="Canvas">Canvas</option>
+      <option value="Upholstery">Upholstery</option>
+      <option value="Fleece">Fleece</option>
+    </select>
+
+    <div id="luxury-extraFabricContainer" style="display:none;">
+      <div class="print-heading">Fabric Print Pattern (up to 3 choices)</div>
+      <div class="or-blocks">
+        <input type="text" id="luxury-choice1" placeholder="Choice 1" />
+        <span style="align-self:center;">OR</span>
+        <input type="text" id="luxury-choice2" placeholder="Choice 2" />
+        <span style="align-self:center;">OR</span>
+        <input type="text" id="luxury-choice3" placeholder="Choice 3" />
+      </div>
+    </div>
+
+    <label>Colour Options</label>
+    <div class="or-blocks">
+      <input type="text" id="luxury-color1" placeholder="Colour 1" />
+      <input type="text" id="luxury-color2" placeholder="Colour 2" />
+      <input type="text" id="luxury-color3" placeholder="Colour 3" />
+    </div>
+
+    <label>Quantity</label>
+    <input type="number" id="luxury-quantity" min="1" value="1" />
+
+    <button onclick="addToCart('Luxury')">Add to Cart</button>
+  </div>
+
+  <!-- Standard Oval Bed Cushion -->
+  <div class="product">
+    <h2>Standard Oval Bed Cushion</h2>
+    <img src="125192354_117421646840529_4079604025489317033_n.jpg" alt="Standard Oval Bed Cushion" style="width:100%; border-radius:6px;" />
+    <p>High-quality oval bed cushion available in Standard finishes, three sizes, and multiple fabric choices.</p>
+
+    <label>Size</label>
+    <select id="standard-size">
+      <option value="Small">Small {60x40cm} (R270)</option>
+      <option value="Medium">Medium {82x54cm} (R330)</option>
+      <option value="Large">Large {100x64cm} (R380)</option>
+    </select>
+
+    <label>Fabric</label>
+    <select id="standard-fabric" onchange="updateFabricInputs('standard')">
+      <option value="Denim">Denim</option>
+      <option value="Canvas">Canvas</option>
+      <option value="Upholstery">Upholstery</option>
+      <option value="Fleece">Fleece</option>
+    </select>
+
+    <div id="standard-extraFabricContainer" style="display:none;">
+      <div class="print-heading" title="Choose up to 3 print options">Print (Up to 3 choices)</div>
+      <div class="or-blocks">
+        <input type="text" id="standard-choice1" placeholder="Choice 1">
+        <span style="align-self:center;">OR</span>
+        <input type="text" id="standard-choice2" placeholder="Choice 2">
+        <span style="align-self:center;">OR</span>
+        <input type="text" id="standard-choice3" placeholder="Choice 3">
+      </div>
+    </div>
+
+    <label>Colour Options</label>
+    <div class="or-blocks">
+      <input type="text" id="standard-color1" placeholder="Colour 1" />
+      <input type="text" id="standard-color2" placeholder="Colour 2" />
+      <input type="text" id="standard-color3" placeholder="Colour 3" />
+    </div>
+
+    <label>Quantity</label>
+    <input type="number" id="standard-quantity" min="1" value="1" />
+
+    <button onclick="addToCart('Standard')">Add to Cart</button>
+  </div>
+
+  <!-- Round Bed Cover -->
+  <div class="product">
+    <h2>Round Bed Cover</h2>
+    <img src="538843030_1605860827421529_3398697172769280996_n.jpg" alt="Round Bed Cover" style="width:100%; border-radius:6px;" />
+    <p>High-quality round bed cover available in Luxury and Standard finishes.</p>
+
+    <label>Size</label>
+    <select id="round-size">
+      <option value="Standard">Standard (Cushion Only) {68cm ⌀} (R380)</option>
+      <option value="Luxury">Luxury (Full Bed Cover) {68cm ⌀} (R850)</option>
+    </select>
+
+    <label>Fabric</label>
+    <select id="round-fabric" onchange="updateFabricInputs('round')">
+      <option value="Denim">Denim</option>
+      <option value="Canvas">Canvas</option>
+      <option value="Upholstery">Upholstery</option>
+      <option value="Fleece">Fleece</option>
+    </select>
+
+    <div id="round-extraFabricContainer" style="display:none;">
+      <div class="print-heading">Print (Up to 3 choices)</div>
+      <div class="or-blocks">
+        <input type="text" id="round-choice1" placeholder="Choice 1" />
+        <input type="text" id="round-choice2" placeholder="Choice 2" />
+        <input type="text" id="round-choice3" placeholder="Choice 3" />
+      </div>
+    </div>
+
+    <label>Colour Options</label>
+    <div class="or-blocks">
+      <input type="text" id="round-color1" placeholder="Colour 1" />
+      <input type="text" id="round-color2" placeholder="Colour 2" />
+      <input type="text" id="round-color3" placeholder="Colour 3" />
+    </div>
+
+    <label>Quantity</label>
+    <input type="number" id="round-quantity" min="1" value="1" />
+
+    <button onclick="addToCart('Round')">Add to Cart</button>
+  </div>
+
+  <!-- Cart -->
+  <div class="cart-summary">
+    <h3>Cart</h3>
+    <div id="cartItems"></div>
+    <p id="cartTotal"></p>
+    <button onclick="sendCartViaWhatsApp()" style="background:#25D366;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:20px; vertical-align:middle; margin-right:8px;" />
+      Send Order via WhatsApp
+    </button>
+  </div>
+</section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+      <h2>Gallery</h2>
+      <div class="gallery-grid">
+        <img src="125192354_117421646840529_4079604025489317033_n.jpg" alt="Standard Oval Bed Cushion" class="gallery-thumbnail" onclick="openLightbox(this.src)" style="width:100%; border-radius:6px;"> 
+        <img src="125298134_117411260174901_5926903200497521646_n.jpg" alt="Standard Oval Bed Cushion" class="gallery-thumbnail" onclick="openLightbox(this.src)" style="width:100%; border-radius:6px;"> 
+        <img src="130304608_133624158553611_1620794165392097497_n.jpg" alt="Standard Oval Bed Cushion" class="gallery-thumbnail" onclick="openLightbox(this.src)" style="width:100%; border-radius:6px;"> 
+        <img src="139131303_160230415892985_6143799980949411334_n.jpg" alt="Standard Oval Bed Cushion" class="gallery-thumbnail" onclick="openLightbox(this.src)" style="width:100%; border-radius:6px;"> 
+        <img src="146341434_175036941078999_5157535100705499602_n.jpg" alt="Standard Oval Bed Cushion" class="gallery-thumbnail" onclick="openLightbox(this.src)" style="width:100%; border-radius:6px;"> 
+        <img src="148826073_179136427335717_195453719009811662_n.jpg" alt="Standard Oval Bed Cushion" class="gallery-thumbnail" onclick="openLightbox(this.src)" style="width:100%; border-radius:6px;"> 
+        <img src="149365912_179136377335722_748973367660676833_n.jpg" alt="Standard Oval Bed Cushion" class="gallery-thumbnail" onclick="openLightbox(this.src)" style="width:100%; border-radius:6px;"> 
+        <img src="152957361_187362179846475_5918904471095144805_n.jpg" alt="Standard Oval Bed Cushion" class="gallery-thumbnail" onclick="openLightbox(this.src)" style="width:100%; border-radius:6px;"> 
+        <img src="154786812_189050979677595_6075317782223097029_n.jpg" alt="Standard Oval Bed Cushion" class="gallery-thumbnail" onclick="openLightbox(this.src)" style="width:100%; border-radius:6px;"> 
+        <img src="162719566_203451351570891_7769355112509989781_n.jpg" alt="Standard Oval Bed Cushion" class="gallery-thumbnail" onclick="openLightbox(this.src)" style="width:100%; border-radius:6px;"> 
+        <img src="164560405_207020611213965_6449627546651512952_n.jpg" alt="Standard Oval Bed Cushion" class="gallery-thumbnail" onclick="openLightbox(this.src)" style="width:100%; border-radius:6px;"> 
+        <img src="169594607_216667610249265_2961035303162256997_n.jpg" alt="Standard Oval Bed Cushion" class="gallery-thumbnail" onclick="openLightbox(this.src)" style="width:100%; border-radius:6px;"> 
+        <img src="207470628_275251707724188_9010382344553550611_n.jpg" alt="Standard Oval Bed Cushion" class="gallery-thumbnail" onclick="openLightbox(this.src)" style="width:100%; border-radius:6px;"> 
+        <img src="137257012_155856626330364_7114817252992511464_n.jpg" alt="Standard Oval Bed Cushion" class="gallery-thumbnail" onclick="openLightbox(this.src)" style="width:100%; border-radius:6px;"> 
+        <img src="469910530_1105554254693925_6495119613872774763_n (1).jpg" alt="Standard Oval Bed Cushion" class="gallery-thumbnail" onclick="openLightbox(this.src)" style="width:100%; border-radius:6px;"> 
+        <img src="WhatsApp Image 2025-09-08 at 13.52.09 (1).jpeg" alt="Standard Oval Bed Cushion" class="gallery-thumbnail" onclick="openLightbox(this.src)" style="width:100%; border-radius:6px;"> 
+        <img src="470145145_1105538304695520_7789665821496474792_n.jpg" alt="Standard Oval Bed Cushion" class="gallery-thumbnail" onclick="openLightbox(this.src)" style="width:100%; border-radius:6px;"> 
+        <img src="475289867_1138169868099030_4861975307489822117_n.jpg" alt="Standard Oval Bed Cushion" class="gallery-thumbnail" onclick="openLightbox(this.src)" style="width:100%; border-radius:6px;"> 
+        <img src="482809131_1451696216171325_2774808495977597637_n.jpg" alt="Standard Oval Bed Cushion" class="gallery-thumbnail" onclick="openLightbox(this.src)" style="width:100%; border-radius:6px;"> 
+        <img src="483475748_1451696569504623_7408368318720566078_n.jpg" alt="Standard Oval Bed Cushion" class="gallery-thumbnail" onclick="openLightbox(this.src)" style="width:100%; border-radius:6px;"> 
+        <img src="484591440_1459047405436206_5012879979076453027_n.jpg" alt="Standard Oval Bed Cushion" class="gallery-thumbnail" onclick="openLightbox(this.src)" style="width:100%; border-radius:6px;"> 
+        <img src="537163739_1601112957896316_8709995004352958184_n.jpg" alt="Standard Oval Bed Cushion" class="gallery-thumbnail" onclick="openLightbox(this.src)" style="width:100%; border-radius:6px;"> 
+        <img src="538843030_1605860827421529_3398697172769280996_n.jpg" alt="Standard Oval Bed Cushion" class="gallery-thumbnail" onclick="openLightbox(this.src)" style="width:100%; border-radius:6px;"> 
+        <img src="138759156_158663286049698_55985959095219833_n.jpg" alt="Standard Oval Bed Cushion" class="gallery-thumbnail" onclick="openLightbox(this.src)" style="width:100%; border-radius:6px;">
+      </div>
+
+      <div id="lightbox" onclick="closeLightbox()">
+        <img src="" alt="Expanded Image" />
+      </div>
+    </section>
+
+    <!-- About Us Section --> 
+     <section id="about">
+       <h2>About Us</h2>
+        <p>This journey started during Covid, when life slowed down and I began noticing how many pets needed a comfortable space that was truly their own. With three of my own fur-babies (who are more like children to me!), I understood how much comfort, warmth, and love mean to them.</p> 
+        <p>I began hand-making pet beds, each one stitched with care, attention to detail, and plenty of love. What makes these beds different is that they’re designed to fit perfectly into Petzone’s plastic beds, making them both practical and cozy. They’re durable, easy to clean, and made to last — while still giving your pets that soft, snuggly spot they deserve.</p> 
+        <p>I am also able to make custom cushions. For example, for imported and woven beds. Sets can also be requested, (bed, cushion, pillows and blankets).</p> <p>What started as a small idea has grown into something very close to my heart: creating cozy spaces where pets feel safe and happy, and giving fellow pet parents the peace of mind that their four-legged family members are truly cared for.</p> 
+        <p><em>* Plastic beds sold separately</em></p>
+     </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <form onsubmit="return false;">
+        <label for="name">Name</label>
+        <input type="text" id="name" required />
+
+        <label for="email">Email</label>
+        <input type="text" id="email" required />
+
+        <label for="message">Message</label>
+        <textarea id="message" rows="4" required></textarea>
+
+        <button type="submit" onclick="alert('Thank you for reaching out! We will get back to you soon.')">Send</button>
+      </form>
+      <p>For custom orders and inquiries, reach us at:</p> 
+      <p><strong>Robyn Billett</strong> - 072 658 9482</p> 
+      <p>Email: petsnuggyups@gmail.com</p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Pets Snuggy Ups
+  </footer>
+
+  <script>
+  // Show/hide sections for nav
+  function showSection(sectionId, link) {
+    document.querySelectorAll('section').forEach(section => {
+      section.classList.remove('active');
+    });
+    document.getElementById(sectionId).classList.add('active');
+
+    document.querySelectorAll('nav a').forEach(navLink => {
+      navLink.classList.remove('active');
+    });
+    link.classList.add('active');
+  }
+
+  // Fabric choice inputs toggle
+  function updateFabricInputs(prefix) {
+    const fabric = document.getElementById(prefix + '-fabric').value.toLowerCase();
+    const container = document.getElementById(prefix + '-extraFabricContainer');
+    container.style.display = (fabric === 'upholstery' || fabric === 'fleece') ? 'block' : 'none';
+  }
+
+  // Cart functionality
+  let cart = [];
+
+  function addToCart(type) {
+    const prefix = type.toLowerCase();
+    const size = document.getElementById(`${prefix}-size`).value;
+    const fabric = document.getElementById(`${prefix}-fabric`).value;
+    const colors = [
+      document.getElementById(`${prefix}-color1`).value,
+      document.getElementById(`${prefix}-color2`).value,
+      document.getElementById(`${prefix}-color3`).value
+    ].filter(c => c.trim() !== '');
+    const quantity = parseInt(document.getElementById(`${prefix}-quantity`).value);
+
+    const priceMap = {
+      Luxury: { Small: 600, Medium: 750, Large: 850 },
+      Standard: { Small: 270, Medium: 330, Large: 380 },
+      Round: { Standard: 380, Luxury: 850 }
+    };
+
+    const price = (priceMap[type] && priceMap[type][size]) ? priceMap[type][size] : 0;
+
+    // Collect print choices if applicable
+    let printChoices = [];
+    if (fabric.toLowerCase() === 'upholstery' || fabric.toLowerCase() === 'fleece') {
+      printChoices = [
+        document.getElementById(`${prefix}-choice1`).value,
+        document.getElementById(`${prefix}-choice2`).value,
+        document.getElementById(`${prefix}-choice3`).value
+      ].filter(c => c.trim() !== '');
+    }
+
+    const item = {
+      type,
+      size,
+      fabric,
+      colors,
+      prints: printChoices,
+      quantity,
+      price,
+      total: price * quantity
+    };
+
+    cart.push(item);
+    updateCartSummary();
+    alert(`${type} Bed added to cart.`);
+  }
+
+  function updateCartSummary() {
+    const cartItemsContainer = document.getElementById('cartItems');
+    const cartTotalContainer = document.getElementById('cartTotal');
+
+    cartItemsContainer.innerHTML = '';
+
+    if (!cart.length) {
+      cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+      cartTotalContainer.textContent = '';
+      return;
+    }
+
+    let totalPrice = 0;
+
+    cart.forEach((item, idx) => {
+      const colors = item.colors.length ? item.colors.join(', ') : 'No colors';
+      const prints = item.prints.length ? item.prints.join(' OR ') : null;
+
+      totalPrice += item.total;
+
+      const itemDiv = document.createElement('div');
+      itemDiv.className = 'cart-item';
+      itemDiv.innerHTML = `
+        <strong>${item.type} Bed</strong><br>
+        Size: ${item.size}<br>
+        Fabric: ${item.fabric}<br>
+        Colors: ${colors}<br>
+        ${prints ? `Prints: ${prints}<br>` : ''}
+        Quantity: ${item.quantity}<br>
+        <strong>Total: R${item.total}</strong>
+      `;
+
+      const removeBtn = document.createElement('span');
+      removeBtn.innerHTML = ' ❌';
+      removeBtn.style.cursor = 'pointer';
+      removeBtn.style.color = 'red';
+      removeBtn.title = 'Remove item from cart';
+      removeBtn.onclick = () => removeFromCart(idx);
+
+      itemDiv.appendChild(removeBtn);
+      cartItemsContainer.appendChild(itemDiv);
+      cartItemsContainer.appendChild(document.createElement('hr'));
+    });
+
+    cartTotalContainer.textContent = `Total: R${totalPrice}`;
+  }
+
+  function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCartSummary();
+  }
+
+  function sendCartViaWhatsApp() {
+    if (!cart.length) {
+      alert('Your cart is empty!');
+      return;
+    }
+
+    let message = 'My Pet Snuggy Ups Order:\n';
+
+    cart.forEach((item, idx) => {
+      message += `${idx + 1}. ${item.type} Bed - Size: ${item.size} - Fabric: ${item.fabric}`;
+      if (item.colors.length) message += ` - Colors: ${item.colors.join(', ')}`;
+      if (item.prints.length) message += ` - Prints: ${item.prints.join(' OR ')}`;
+      message += ` - Qty: ${item.quantity} - Total: R${item.total}\n`;
+    });
+
+    const totalPrice = cart.reduce((sum, item) => sum + item.total, 0);
+    message += `Total: R${totalPrice}`;
+
+    const phoneNumber = '27726589482'; // your WhatsApp number
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  }
+
+  // Gallery lightbox
+  function openLightbox(src) {
+    const lightbox = document.getElementById('lightbox');
+    lightbox.style.display = 'flex';
+    lightbox.querySelector('img').src = src;
+  }
+
+  function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    lightbox.style.display = 'none';
+    lightbox.querySelector('img').src = '';
+  }
+</script>
+</body>
+</html>
